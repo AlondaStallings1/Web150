@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+ <form id="form1" action="#" onsubmit="return validateForm(this);">
+  
+  First name:<br>
+  <input type="text" name="firstname" value="">
+  <br>
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname" value="">
+  <br><br>
+ 
+  Password:<br>
+  <input type="text" name="password" value="">
+  <br><br>
+  <input type="submit" value="Submit">
+  
+ 
+  
+</form> 
+
+<hr><div id="message"></div>
+
+<script>
+
+function validateForm(myForm)
+ {
+
+  var firstname = myForm.firstname.value; // get text of firstname field
+console.log(firstname)
+var lastname = myForm.lastname.value; // get test lastname field
+console.log (lastname)
+var password = myForm.password.value;
+
+	if ( firstname.length == 0){
+		$("#message").html("please enter firstname");
+	}
+	else if( lastname.length == 0){
+		$("#message").html("please enter lastname");
+	} else if (!isValidPassWord(password) ) {
+		$("#message").html("please enter password");
+	}
+	else{ $("#message").html( "everything is valid");}
+  
+
+  
+  
+ 
+ 
+
+  return false; // prevent page reload
+}
+
+function isValidPassWord(password){
+
+	// return true if password is valid
+	// return false if passwird is invalid
+	if( password.length < 8){
+		return false
+	}
+	// check for lower case letters
+	else if (password == password.toUpperCase()){
+		return false
+	}
+	// check for uppercase letters
+	
+	else if (password == password.toLowerCase()){
+	return false
+	}
+	return true
+	//"a".toUpperCase()=="A"//
+//password == password.ToUpperCase() //
+//if True,password has no lowercase letters
+
+}
+
+
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
+
