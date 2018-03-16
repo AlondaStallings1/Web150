@@ -1,0 +1,101 @@
+ <!DOCTYPE html>
+<html>
+<head>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<title></title>
+</head>
+
+<body>
+<div id "buttons">
+<button>rock</button>
+<button>disco</button>
+<button>country</button>
+<button>house</button>
+</div>
+<table border = '1'<tr>
+<th>Artist</th>
+<th>Albums</th>
+<th>Genre</th>
+<th>Year</th>
+<th>Label</th>
+</tr>
+
+</table>
+<button>reset</button>
+</body>
+
+<script>
+/*
+var buttons = $('button');
+buttons.on('click', function() {
+  console.log('');
+});
+
+var btnClick = function() {
+  console.log("You've got events!");
+};
+
+buttons.on('click', btnClick);
+console.log($(this).text
+
+var list = document.getElementById("list');
+
+ function buttonClick(e){
+ console.log($(this))
+ console.log(e.target=''+ e.target)
+ console.log(e.target= '' + e,pageX)
+ console.log(e.pageX.id +''+ e.pageY)
+ ));
+ 
+ */
+// list of 
+var artists = [
+{"artist":"a","albums":"","genre":"rock","year":"1974","label":""},
+{"artist":"b","albums":"","genre":"disco","year":"1977","label":""},
+{"artist":"c","albums":"","genre":"country","year":"1982","label":""},
+{"artist":"d","albums":"","genre":"house","year":"1995","label":""}
+]
+
+	$(document).ready(function(){
+        /*
+        - add a button for each 'house' value
+        - add table row for each character
+		 
+        - add a button for each 'house' value
+        - add table row for each character
+        - set visible rows to alternating background color
+            
+        - add click handler to show only rows matching selected 'house'. Enable buttons to call this handler. 
+        
+        - add click handler to reset table 
+        */
+		
+		for (n in artists){ 
+       //document.write(artists[n] + "<br>");
+	   $("table").append("<tr><td>" + artists[n].artist + "</td><td>" + artists[n].albums + "</td><td>" + artists[n].genre+ "</td><td>" + artists[n].year+ "</td><td>" + artists[n].label + "</td></tr>");
+        }
+		
+        var buttons = $('button');
+        buttons.on('click', function() {
+		var text =$(this).text()
+		console.log(text)
+        var rows = $("tr")
+		if(text== "reset"){
+		rows.show()
+		}else{
+		rows = $("td:nth-child(3)").not(":contains('" + text+ "')").parent();
+		rows.hide()
+		}
+		
+         });
+
+		
+		
+       
+        });
+
+
+</script>
+</html> 
