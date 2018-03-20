@@ -1,0 +1,50 @@
+ <!DOCTYPE html>
+<html>
+<head>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<title></title>
+</head>
+
+<body>
+
+    <div id="forecast" />
+    
+<script>
+    $(document).ready(function(){
+var url = 'http://api.openweathermap.org/data/2.5/forecast?q=Seattle,us&APPID=9d88ad19cc85b1f62b74b11d03985dc3'
+function kelvinToF(value) {
+  var fahrenheit = (((Number(value) - 273.15)*9)/5) + 32;
+  return fahrenheit.toFixed(2);
+}
+$.get(url,function(response,status) {
+  if (status == "success") {
+    // handle a successful request
+      console.log(response)
+      
+      for (n in response.list){ 
+      $("#forecast").append(response.list[n].dt_txt)
+      $("#forecast").append('<br>Weather'+response.list[n].weather[0].description)
+      $("#forecast").append('<br>humidity'+response.list[n].main.humidity)
+      $("#forecast").append('<br>wind'+response.list[n].wind.speed)
+      
+      max_temp = kelvinToF(response.list[n].main.temp_max)
+     $("#forecast").append('<br>temp, max'+max_temp) 
+     
+      min_temp = kelvinToF(response.list[n].main.temp_min)
+     $("#forecast").append('<br>temp, min'+min_temp)  
+      $("#forecast").append('<br>main'+response.list[n].main.pressure)
+          
+          $("#forecast").append("<hr>")
+      }
+  } else {
+      
+    // request failed
+  }
+});
+   
+ });   </script>
+    </body>
+</html>
+
